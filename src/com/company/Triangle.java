@@ -161,19 +161,19 @@ public class Triangle {
     }
 
     public double getAreaWithAngle() {
-        return (this.getLeftSide() * this.getRightSide() * 0.5 * Math.sin(this.angleBetweenSides));
+        return (this.getLeftSide() * this.getRightSide() * 0.5 * Math.sin(this.angleBetweenSides * Math.PI / 180));
     }
 
     public double cosineTheorem() {
         return (Math.sqrt(Math.pow(this.getLeftSide(), 2) +
                 Math.pow(this.getRightSide(), 2) - 2 * this.getLeftSide() *
-                this.getRightSide() * Math.cos(this.getAngleBetweenSides())));
+                this.getRightSide() * Math.cos(this.getAngleBetweenSides() * Math.PI / 180)));
     }
 
     public double sineTheorem() {
         int thirdAngle = 180 - (this.getFirstAngle() + this.getSecondAngle());
-        return ((Math.sin(this.getSecondAngle()) * this.getSideBetweenAngles()) /
-                Math.sin(thirdAngle));
+        return ((Math.sin(this.getSecondAngle() * Math.PI / 180) * this.getSideBetweenAngles()) /
+                Math.sin(thirdAngle * Math.PI / 180));
     }
 
     public double getRadCircumscribed() {
