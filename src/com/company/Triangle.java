@@ -7,128 +7,85 @@ Laba6.Triangle
 
 package com.company;
 
-import javax.swing.text.MutableAttributeSet;
 import java.util.Objects;
 
 public class Triangle {
-    private int firstSide;
-    private int secondSide;
-    private int thirdSide;
+    private int aSide;
+    private int bSide;
+    private int cSide;
 
-    private int angleBetweenSides;
-    private int leftSide;
-    private int rightSide;
+    private int side;
 
-    private int firstAngle;
-    private int secondAngle;
-    private int sideBetweenAngles;
+    private int leg;
+    private int angle;
 
     public Triangle() {
     }
 
-    public Triangle(int firstSide, int secondSide, int thirdSide) {
-        this.firstSide = firstSide;
-        this.secondSide = secondSide;
-        this.thirdSide = thirdSide;
+    public Triangle(int side) {
+        // рівносторонній трикутник
+        this.side = side;
     }
 
-    public Triangle(int angleBetweenSides, int leftSide, int rightSide, int someVar) {
-        this.angleBetweenSides = angleBetweenSides;
-        this.leftSide = leftSide;
-        this.rightSide = rightSide;
+    public Triangle(int leg, int angle) {
+        // прямокутний трикутник
+        this.leg = leg;
+        this.angle = angle;
     }
 
-    public Triangle(int firstAngle, int secondAngle, int sideBetweenAngles, int someVar1, int someVar2) {
-        this.firstAngle = firstAngle;
-        this.secondAngle = secondAngle;
-        this.sideBetweenAngles = sideBetweenAngles;
+    public Triangle(int aSide, int bSide, int cSide) {
+        // будь який інший трикутник, у якого всі сторони різні
+        this.aSide = aSide;
+        this.bSide = bSide;
+        this.cSide = cSide;
     }
 
-    @Override
-    public String toString() {
-        return "Triangle{" +
-                "firstSide=" + firstSide +
-                ", secondSide=" + secondSide +
-                ", thirdSide=" + thirdSide +
-                ", angleBetweenSides=" + angleBetweenSides +
-                ", leftSide=" + leftSide +
-                ", rightSide=" + rightSide +
-                ", firstAngle=" + firstAngle +
-                ", secondAngle=" + secondAngle +
-                ", sideBetweenAngles=" + sideBetweenAngles +
-                '}';
+    public int getaSide() {
+        return aSide;
     }
 
-    public int getFirstSide() {
-        return firstSide;
+    public void setaSide(int aSide) {
+        this.aSide = aSide;
     }
 
-    public void setFirstSide(int firstSide) {
-        this.firstSide = firstSide;
+    public int getbSide() {
+        return bSide;
     }
 
-    public int getSecondSide() {
-        return secondSide;
+    public void setbSide(int bSide) {
+        this.bSide = bSide;
     }
 
-    public void setSecondSide(int secondSide) {
-        this.secondSide = secondSide;
+    public int getcSide() {
+        return cSide;
     }
 
-    public int getThirdSide() {
-        return thirdSide;
+    public void setcSide(int cSide) {
+        this.cSide = cSide;
     }
 
-    public void setThirdSide(int thirdSide) {
-        this.thirdSide = thirdSide;
+    public int getSide() {
+        return side;
     }
 
-    public int getAngleBetweenSides() {
-        return angleBetweenSides;
+    public void setSide(int side) {
+        this.side = side;
     }
 
-    public void setAngleBetweenSides(int angleBetweenSides) {
-        this.angleBetweenSides = angleBetweenSides;
+    public int getLeg() {
+        return leg;
     }
 
-    public int getLeftSide() {
-        return leftSide;
+    public void setLeg(int leg) {
+        this.leg = leg;
     }
 
-    public void setLeftSide(int leftSide) {
-        this.leftSide = leftSide;
+    public int getAngle() {
+        return angle;
     }
 
-    public int getRightSide() {
-        return rightSide;
-    }
-
-    public void setRightSide(int rightSide) {
-        this.rightSide = rightSide;
-    }
-
-    public int getFirstAngle() {
-        return firstAngle;
-    }
-
-    public void setFirstAngle(int firstAngle) {
-        this.firstAngle = firstAngle;
-    }
-
-    public int getSecondAngle() {
-        return secondAngle;
-    }
-
-    public void setSecondAngle(int secondAngle) {
-        this.secondAngle = secondAngle;
-    }
-
-    public int getSideBetweenAngles() {
-        return sideBetweenAngles;
-    }
-
-    public void setSideBetweenAngles(int sideBetweenAngles) {
-        this.sideBetweenAngles = sideBetweenAngles;
+    public void setAngle(int angle) {
+        this.angle = angle;
     }
 
     @Override
@@ -136,49 +93,92 @@ public class Triangle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return firstSide == triangle.firstSide &&
-                secondSide == triangle.secondSide &&
-                thirdSide == triangle.thirdSide &&
-                angleBetweenSides == triangle.angleBetweenSides &&
-                leftSide == triangle.leftSide &&
-                rightSide == triangle.rightSide &&
-                firstAngle == triangle.firstAngle &&
-                secondAngle == triangle.secondAngle &&
-                sideBetweenAngles == triangle.sideBetweenAngles;
+        return aSide == triangle.aSide &&
+                bSide == triangle.bSide &&
+                cSide == triangle.cSide &&
+                side == triangle.side &&
+                leg == triangle.leg &&
+                angle == triangle.angle;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstSide, secondSide, thirdSide, angleBetweenSides, leftSide, rightSide, firstAngle, secondAngle, sideBetweenAngles);
+        return Objects.hash(aSide, bSide, cSide, side, leg, angle);
     }
 
-    public double getAreaWithSides() {
-        double halfPerimeter = (this.getFirstSide() +
-                this.getSecondSide() + this.getThirdSide());
-        return (Math.sqrt(halfPerimeter * (halfPerimeter - this.getFirstSide()) *
-                (halfPerimeter - this.getSecondSide()) *
-                (halfPerimeter - this.getThirdSide())));
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "aSide=" + aSide +
+                ", bSide=" + bSide +
+                ", cSide=" + cSide +
+                ", side=" + side +
+                ", leg=" + leg +
+                ", angle=" + angle +
+                '}';
     }
 
-    public double getAreaWithAngle() {
-        return (this.getLeftSide() * this.getRightSide() * 0.5 * Math.sin(this.angleBetweenSides * Math.PI / 180));
+    // функції для рівностороннього трикутника
+
+    // периметр
+    public int getPerimeterEqualTriangle() {
+        return 3 * this.getSide();
     }
 
-    public double cosineTheorem() {
-        return (Math.sqrt(Math.pow(this.getLeftSide(), 2) +
-                Math.pow(this.getRightSide(), 2) - 2 * this.getLeftSide() *
-                this.getRightSide() * Math.cos(this.getAngleBetweenSides() * Math.PI / 180)));
+    // площа
+    public double getAreaEqualTriangle() {
+        return Math.pow(this.getSide(), 2) * Math.sqrt(3) / 4;
     }
 
-    public double sineTheorem() {
-        int thirdAngle = 180 - (this.getFirstAngle() + this.getSecondAngle());
-        return ((Math.sin(this.getSecondAngle() * Math.PI / 180) * this.getSideBetweenAngles()) /
-                Math.sin(thirdAngle * Math.PI / 180));
+    //висота
+    public double getHeightEqualTriangle() {
+        double area = getAreaEqualTriangle();
+        return 2 * area / this.getSide();
     }
 
-    public double getRadCircumscribed() {
-        double area = getAreaWithSides();
-        return ((this.getFirstSide() * this.getSecondSide() * this.getThirdSide() /
-                (4 * area)));
+    // радіус кола описаного навколо рівностороннього трикутника
+    public double getRadiusAroundEqualTriangle() {
+        return this.getSide() / Math.sqrt(3);
+    }
+
+    // функції для прямокутного трикутника
+
+    // гіпотенуза
+    public double getHypotenuse() {
+        return Math.sqrt(Math.pow(this.getLeg(), 2) * 2);
+    }
+
+    // радіус кола вписаного в прямокутний трикутник
+    public double getRadiusInRectTriangle() {
+        double hypotenuse = getHypotenuse();
+        return (this.getLeg() * 2 - hypotenuse) / 2;
+    }
+
+    // площа
+    public double getAreaRectTriangle() {
+        return Math.pow(this.getLeg(), 2) / 2;
+    }
+
+    // радіус кола описаного навколо прямокутного трикутника
+    public double getRadiusAroundRectTriangle() {
+        double hypotenuse = getHypotenuse();
+        return hypotenuse / 2;
+    }
+
+    // функції для будь якого іншого трикутника
+
+    // площа
+    public double getAreaAnyTriangle() {
+        double halfPerimeter = (this.getaSide() + this.getbSide() + this.getcSide()) / 2;
+        return Math.sqrt(halfPerimeter *
+                (halfPerimeter - this.getaSide()) *
+                (halfPerimeter - this.getbSide()) *
+                (halfPerimeter - this.getcSide()));
+    }
+
+    // висота в основі якої лежить сторона а
+    public double getHeightAnyTriangle() {
+        double area = getAreaAnyTriangle();
+        return 2 * area / this.getaSide();
     }
 }
